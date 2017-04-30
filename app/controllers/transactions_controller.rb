@@ -15,10 +15,16 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    kind_opcoes_select
+    category_opcoes_select
+    account_opcoes_select
   end
 
   # GET /transactions/1/edit
   def edit
+    kind_opcoes_select
+    category_opcoes_select
+    account_opcoes_select
   end
 
   # POST /transactions
@@ -62,6 +68,19 @@ class TransactionsController < ApplicationController
   end
 
   private
+
+    def kind_opcoes_select
+      @kind_options_for_select = KindTransaction.all
+    end
+
+    def category_opcoes_select
+      @category_options_for_select = Category.all
+    end
+
+    def account_opcoes_select
+      @account_options_for_select = Account.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_transaction
       @transaction = Transaction.find(params[:id])

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :kind_transaction_id %><br>
-    <%= f.text_field :kind_transaction_id %>
+    <%= collection_select(:transaction, :kind_transaction_id, @kind_options_for_select, :id, :description) %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
+    <%= collection_select(:transaction, :category_id, @category_options_for_select, :id, :description) %>
   </div>
   <div class="field">
     <%= f.label :account_id %><br>
-    <%= f.text_field :account_id %>
+    <%= collection_select(:transaction, :account_id, @account_options_for_select, :id, :description) %>
   </div>
   <div class="field">
     <%= f.label :paid %><br>
