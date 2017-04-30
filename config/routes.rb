@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :transactions
+  resources :categories
+  resources :kind_transactions
+  resources :accounts
   devise_for :admins
   devise_for :members
   get 'home/index'

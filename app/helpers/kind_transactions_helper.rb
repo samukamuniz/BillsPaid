@@ -1,0 +1,2 @@
+module KindTransactionsHelper
+end
