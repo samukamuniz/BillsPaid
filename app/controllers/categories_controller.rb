@@ -15,10 +15,12 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    options_for_select
   end
 
   # GET /categories/1/edit
   def edit
+    options_for_select
   end
 
   # POST /categories
@@ -62,6 +64,11 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+    def options_for_select
+      @kind_options_for_select = KindTransaction.all
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
@@ -69,6 +76,8 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:description, :kind_transaction_id)
+      params.require(:category).permit(:description, :kind_transaction_id,
+      
+      kind_transactions_attributes: [:id, :description])
     end
 end
