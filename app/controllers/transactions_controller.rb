@@ -91,17 +91,26 @@ class TransactionsController < ApplicationController
     
     else
       returnsMoneyToInitialAccount
-      migrateExpenseToNewAccount
+      migrateAmountToAccount
     end
   end
 
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy
+
+    @check = Transaction.find(@transaction.id)
+
     @transaction.destroy
     respond_to do |format|
       format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
       format.json { head :no_content }
+    end
+
+    if @transaction.kind_transaction_id == 1
+      returnsMoneyToInitialAccount
+    else
+      migrateAmountToAccount
     end
   end
 
@@ -125,7 +134,7 @@ class TransactionsController < ApplicationController
       aux.save
     end
 
-    def migrateExpenseToNewAccount
+    def migrateAmountToAccount
       aux = Account.find(@transaction.account_id)
       aux.amount -= @transaction.amount 
       aux.save
