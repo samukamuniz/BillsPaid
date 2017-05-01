@@ -31,7 +31,17 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-
+    
+    if @transaction.kind_transaction_id == 1
+      if @transaction.paid == true
+        expense
+      end
+    else
+      if @transaction.paid == true
+        income
+      end
+    end
+    
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
@@ -79,6 +89,18 @@ class TransactionsController < ApplicationController
 
     def account_opcoes_select
       @account_options_for_select = Account.all
+    end
+
+    def expense
+      aux = Account.find(@transaction.account_id)
+      aux.amount = aux.amount - @transaction.amount
+      aux.save
+    end
+
+    def income
+      aux = Account.find(@transaction.account_id)
+      aux.amount = aux.amount + @transaction.amount
+      aux.save
     end
 
     # Use callbacks to share common setup or constraints between actions.
