@@ -69,23 +69,29 @@ class TransactionsController < ApplicationController
       end
     end
 
-    #Atualiza o valor da conta que estava pendente 
-    if (@check.paid == false) && (@transaction.paid == true)
-      if @transaction.kind_transaction_id == 1
-          expense
-      else
-          income
+    if (@check.account_id) == (@transaction.account_id)
+      #Atualiza o valor da conta que estava pendente 
+      if (@check.paid == false) && (@transaction.paid == true)
+        if @transaction.kind_transaction_id == 1
+            expense
+        else
+            income
+        end
       end
-    end
 
-    #Atualiza o valor da conta que já estava paga
-    if (@check.paid == true) && (@transaction.paid == true)
-      update_expense_true
-    end
+      #Atualiza o valor da conta que já estava paga
+      if (@check.paid == true) && (@transaction.paid == true)
+        update_expense_true
+      end
 
-    #Atualiza o valor da conta que foi desmarcada como paga
-    if (@check.paid == true) && (@transaction.paid == false)
-      update_expense_false
+      #Atualiza o valor da conta que foi desmarcada como paga
+      if (@check.paid == true) && (@transaction.paid == false)
+        update_expense_false
+      end
+    
+    else
+      returnsMoneyToInitialAccount
+      migrateExpenseToNewAccount
     end
   end
 
@@ -111,6 +117,18 @@ class TransactionsController < ApplicationController
 
     def account_opcoes_select
       @account_options_for_select = Account.all
+    end
+
+    def returnsMoneyToInitialAccount
+      aux = Account.find(@check.account_id)
+      aux.amount += @check.amount 
+      aux.save
+    end
+
+    def migrateExpenseToNewAccount
+      aux = Account.find(@transaction.account_id)
+      aux.amount -= @transaction.amount 
+      aux.save
     end
 
     def update_expense_true
