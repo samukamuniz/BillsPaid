@@ -56,6 +56,9 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1
   # PATCH/PUT /transactions/1.json
   def update
+
+    @check = Transaction.find(@transaction.id)
+
     respond_to do |format|
       if @transaction.update(transaction_params)
         format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
@@ -64,6 +67,25 @@ class TransactionsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
+    end
+
+    #Atualiza o valor da conta que estava pendente 
+    if (@check.paid == false) && (@transaction.paid == true)
+      if @transaction.kind_transaction_id == 1
+          expense
+      else
+          income
+      end
+    end
+
+    #Atualiza o valor da conta que já estava paga
+    if (@check.paid == true) && (@transaction.paid == true)
+      update_expense_true
+    end
+
+    #Atualiza o valor da conta que foi desmarcada como paga
+    if (@check.paid == true) && (@transaction.paid == false)
+      update_expense_false
     end
   end
 
@@ -91,6 +113,24 @@ class TransactionsController < ApplicationController
       @account_options_for_select = Account.all
     end
 
+    def update_expense_true
+      if @check.amount > @transaction.amount
+        aux = Account.find(@transaction.account_id)
+        aux.amount += (@check.amount - @transaction.amount)
+        aux.save
+      else
+        aux = Account.find(@transaction.account_id)
+        aux.amount -= (@transaction.amount - @check.amount)
+        aux.save
+      end
+    end
+
+    def update_expense_false
+      aux = Account.find(@transaction.account_id)
+      aux.amount += @transaction.amount
+      aux.save
+    end
+
     def expense
       aux = Account.find(@transaction.account_id)
       aux.amount = aux.amount - @transaction.amount
@@ -111,5 +151,9 @@ class TransactionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
       params.require(:transaction).permit(:kind_transaction_id, :description, :amount, :date, :category_id, :account_id, :paid)
+    end
+
+    def teste
+
     end
 end
