@@ -27,10 +27,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0' 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'rails-assets-bootstrap', '3.3.7', source: 'https://rails-assets.org'
 
-# Para uso do adminbsb-materialdesign
-gem 'rails-assets-jQuery', source: 'https://rails-assets.org'
-gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
+# Rails gem of the Bootstrap based admin theme SB Admin 2.
+gem 'bootstrap_sb_admin_base_v2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
