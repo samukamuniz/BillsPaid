@@ -78,13 +78,14 @@ ActiveRecord::Schema.define(version: 20170430145036) do
   create_table "transactions", force: :cascade do |t|
     t.integer  "kind_transaction_id"
     t.string   "description"
-    t.decimal  "amount"
+    t.decimal  "amount",              precision: 5, scale: 2
+    t.decimal  "decimal",             precision: 5, scale: 2
     t.date     "date"
     t.integer  "category_id"
     t.integer  "account_id"
     t.boolean  "paid"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "transactions", ["account_id"], name: "index_transactions_on_account_id"
