@@ -4,7 +4,7 @@
 
 <p>
   <strong>Kind transaction:</strong>
-  <%= @transaction.kind_transaction %>
+  <%= @transaction.kind_transaction.description %>
 </p>
 
 <p>
@@ -24,12 +24,12 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @transaction.category %>
+  <%= @transaction.category.description %>
 </p>
 
 <p>
   <strong>Account:</strong>
-  <%= @transaction.account %>
+  <%= @transaction.account.description %>
 </p>
 
 <p>

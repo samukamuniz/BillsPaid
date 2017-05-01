@@ -19,11 +19,11 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.kind_transaction %></td>
+        <td><%= transaction.kind_transaction.description %></td>
         <td><%= transaction.date %></td>
         <td><%= transaction.description %></td>
-        <td><%= transaction.category %></td>
-        <td><%= transaction.account %></td>
+        <td><%= transaction.category.description %></td>
+        <td><%= transaction.account.description %></td>
         <td><%= transaction.amount %></td>
         <td><%= transaction.paid %></td>
         <td><%= link_to 'Show', transaction %></td>
