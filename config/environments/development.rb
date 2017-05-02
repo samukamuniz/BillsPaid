@@ -5,6 +5,10 @@ Rails.application.configure do
   $stdout.sync = true
   # Better Errors Config
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+
+  #WebConsole Errors Config
+  config.web_console.whitelisted_ips = ENV['TRUSTED_IP']
+
   # Devise config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
