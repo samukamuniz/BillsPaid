@@ -10,7 +10,20 @@
               Criando Tipos de Transações
             </div>
             <!-- /.panel-heading -->
+
             <div class="panel-body">
+              <div class="col-lg-6">
+                
+                <%= form_for([:backoffice, @kind_transaction]) do |f| %>
+
+                  <div class="form-group">
+                    <%= f.label :description %><br>
+                    <%= f.text_field :description, class: "form-control", placeholder: "Ex: Receitas" %>
+                  </div>
+                
+                  <button type="submit" class="btn btn-default">Salvar</button>
+                <% end %>
+              </div>
               <div class="table-responsive">
                 
               <%#= render 'form' %>

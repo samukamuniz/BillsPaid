@@ -27,7 +27,7 @@ class Backoffice::KindTransactionsController < BackofficeController
 
     respond_to do |format|
       if @kind_transaction.save
-        format.html { redirect_to @kind_transaction, notice: 'Kind transaction was successfully created.' }
+        format.html { redirect_to @kind_transaction, notice: "O Tipo de Categoria (#{@kind_transaction.description}) foi salvo com sucesso!" }
         format.json { render :show, status: :created, location: @kind_transaction }
       else
         format.html { render :new }
