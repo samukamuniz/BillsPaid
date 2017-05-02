@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-  namespace :backoffice do
-    get 'dashboard', to: 'dashboard#index'
-  end
-
   namespace :site do
     get 'home', to: 'home#index'
+  end
+
+  get 'backoffice', to: 'backoffice/dashboard#index'
+
+  namespace :backoffice do
+    get 'dashboard', to: 'dashboard#index'
   end
 
   resources :transactions
   resources :categories
   resources :kind_transactions
   resources :accounts
+
   devise_for :admins
   devise_for :members
 
