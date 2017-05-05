@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get 'backoffice', to: 'backoffice/dashboard#index'
 
   namespace :backoffice do
-    resources :kind_transactions, except: [:show, :destroy]
+    resources :kind_transactions, except: [:show]
+    resources :admins, except: [:show, :destroy]
     get 'dashboard', to: 'dashboard#index'
   end
 
@@ -11,14 +12,12 @@ Rails.application.routes.draw do
     get 'home', to: 'home#index'
   end
 
-
-
   resources :transactions
   resources :categories
   resources :kind_transactions
   resources :accounts
 
-  devise_for :admins
+  devise_for :admins, :skip => [:registrations]
   devise_for :members
 
   root 'site/home#index'
