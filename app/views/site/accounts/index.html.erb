@@ -26,7 +26,10 @@
                 <%= link_to edit_site_account_path(account), class: "btn btn-primary btn-circle" do %>
                   <i class="fa fa-edit"></i>
                 <% end %>
-                <button type="button" disabled="disabled" class="btn btn-danger btn-circle"><i class="fa fa-minus"></i></button>
+                <%= link_to site_account_path(account.id), method: :delete, class: "btn btn-danger btn-circle", 
+                  data: {confirm: "Você deseja realmente excluir (#{account.description})?"} do %>
+                  <i class="fa fa-minus"></i>
+                <% end %>
               </td>
             </tr>
             <% end %>

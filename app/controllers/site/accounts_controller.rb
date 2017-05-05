@@ -4,7 +4,7 @@ class Site::AccountsController < SiteController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = Account.where(member: current_member)
   end
 
   # GET /accounts/1
@@ -25,6 +25,7 @@ class Site::AccountsController < SiteController
   # POST /accounts.json
   def create
     @account = Account.new(account_params)
+    @account.member = current_member
 
     respond_to do |format|
       if @account.save
@@ -54,9 +55,11 @@ class Site::AccountsController < SiteController
   # DELETE /accounts/1
   # DELETE /accounts/1.json
   def destroy
+    conta = @account.description
+
     @account.destroy
     respond_to do |format|
-      format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
+      format.html { redirect_to site_accounts_path, notice: "A Conta (#{conta}) foi deletada com sucesso!" }
       format.json { head :no_content }
     end
   end
