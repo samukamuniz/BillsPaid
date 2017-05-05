@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
+  namespace :site do
+  get 'home', to: 'home#index'
+  get 'accounts', to: 'accounts#index'
+  get 'categories', to: 'categories#index'
+  get 'transactions', to: 'transactions#index'
+  end
+
   get 'backoffice', to: 'backoffice/dashboard#index'
 
   namespace :backoffice do
     resources :kind_transactions, except: [:show]
     resources :admins, except: [:show, :destroy]
     get 'dashboard', to: 'dashboard#index'
-  end
-
-  namespace :site do
-    get 'home', to: 'home#index'
   end
 
   resources :transactions
