@@ -1,4 +1,4 @@
-class Site::AccountsController < ApplicationController
+class Site::AccountsController < SiteController
   def index
   end
 end

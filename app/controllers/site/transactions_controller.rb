@@ -1,4 +1,4 @@
-class Site::TransactionsController < ApplicationController
+class Site::TransactionsController < SiteController
   def index
   end
 end
