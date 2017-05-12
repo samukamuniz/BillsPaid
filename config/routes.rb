@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :accounts, except: [:show]
   resources :categories, except: [:show]
   resources :transactions, except: [:show]
+  resources :members,  except: [:show, :destroy]
   end
 
   get 'backoffice', to: 'backoffice/dashboard#index'
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     resources :admins, except: [:show, :destroy]
   end
 
-  devise_for :admins, :skip => [:registrations]
+  devise_for :admins
   devise_for :members
 
   root 'site/home#index'

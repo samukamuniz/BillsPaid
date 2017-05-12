@@ -1,2 +1,50 @@
-<h1>Site::Transactions#index</h1>
-<p>Find me in app/views/site/transactions/index.html.erb</p>
+<h1 class="page-header">Transações</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Listando as Transações do usuário
+    <%= link_to new_site_transaction_path, class: "btn btn-success pull-right", style: "margin-top: -6px" do %>
+      <i class="fa fa-plus"></i>
+    <% end %>
+  </div>
+  <!-- /.panel-heading -->
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+	      <th>Kind transaction</th>
+	      <th>Date</th>
+	      <th>Description</th>
+	      <th>Category</th>
+	      <th>Account</th>
+	      <th>Amount</th>
+	      <th>Paid</th>
+	      <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transactions.each do |transaction| %>
+          <tr>
+	        <td><%= transaction.kind_transaction.description %></td>
+	        <td><%= transaction.date %></td>
+	        <td><%= transaction.description %></td>
+	        <td><%= transaction.category.description %></td>
+	        <td><%= transaction.account.description %></td>
+	        <td><%= transaction.amount %></td>
+	        <td><%= transaction.paid %></td>
+            <td>
+              <%= link_to edit_site_transaction_path(transaction), class: "btn btn-primary btn-circle" do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+              <%= link_to site_transaction_path(transaction.id), method: :delete, class: "btn btn-danger btn-circle", 
+                data: {confirm: "Você deseja realmente excluir (#{transaction.description})?"} do %>
+                <i class="fa fa-minus"></i>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div><!-- /.table-responsive -->
+  </div><!-- /.panel-body -->
+</div>
