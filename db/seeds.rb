@@ -6,6 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts "Cadastrando Administrador Padrão.."
+	Admin.create!(email: "admin@billspaid.com",
+								password: "123456",
+								password_confirmation: "123456")
+puts "Admin cadastrado com sucesso!"
+
+puts "Cadastrando Usuário Padrão.."
+	Member.create!(email: "samuka@billspaid.com",
+								password: "123456",
+								password_confirmation: "123456")
+puts "Usuário cadastrado com sucesso!"
+
 puts "Gerando Contas"
 	Account.create(description: "Carteira", amount: 230.45, member_id: 1)
 	Account.create(description: "Bradesco", amount: 1038.69, member_id: 1)
