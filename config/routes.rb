@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :admins, except: [:show, :destroy]
   end
 
-  devise_for :admins
+  devise_for :admins, :skip => [:registrations]
   devise_for :members
 
   root 'site/home#index'
