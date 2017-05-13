@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-
   namespace :site do
   get 'home', to: 'home#index'
   resources :accounts, except: [:show]
+  resources :kind_bills, except: [:show]
   resources :categories, except: [:show]
   resources :transactions, except: [:show]
   resources :members,  except: [:show, :destroy]
