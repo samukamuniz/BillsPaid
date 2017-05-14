@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :backoffice do
     get 'dashboard', to: 'dashboard#index'
     resources :kind_transactions, except: [:show]
-    resources :admins, except: [:show, :destroy]
+    resources :admins, except: [:show]
   end
 
   devise_for :admins, :skip => [:registrations]
