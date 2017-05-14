@@ -10,7 +10,8 @@ puts "Cadastrando Administrador Padrão.."
 	Admin.create!(name: "Adm Padrão",
 								email: "admin@billspaid.com",
 								password: "123456",
-								password_confirmation: "123456")
+								password_confirmation: "123456",
+								role: 0)
 puts "Admin cadastrado com sucesso!"
 
 puts "Cadastrando Usuário Padrão.."
