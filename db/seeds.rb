@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts "Cadastrando Administrador Padrão.."
-	Admin.create!(email: "admin@billspaid.com",
+	Admin.create!(name: "Adm Padrão",
+								email: "admin@billspaid.com",
 								password: "123456",
 								password_confirmation: "123456")
 puts "Admin cadastrado com sucesso!"
