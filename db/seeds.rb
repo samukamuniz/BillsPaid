@@ -31,12 +31,12 @@ puts "Contas gerados"
 #puts "Tipos de transações gerados"
 
 puts "Gerando Categorias"
-	Category.find_or_create_by(description: "Alimentação", kind_transaction: 0)
-	Category.find_or_create_by(description: "Educação", kind_transaction: 0)
-	Category.find_or_create_by(description: "Saúde", kind_transaction: 0)
-	Category.find_or_create_by(description: "Diversão", kind_transaction: 0)
-	Category.find_or_create_by(description: "Salário", kind_transaction: 1)
-	Category.find_or_create_by(description: "Freelancer", kind_transaction: 1)
+	Category.find_or_create_by(description: "Alimentação", kind_transaction: 0, member_id: 1)
+	Category.find_or_create_by(description: "Educação", kind_transaction: 0, member_id: 1)
+	Category.find_or_create_by(description: "Saúde", kind_transaction: 0, member_id: 1)
+	Category.find_or_create_by(description: "Diversão", kind_transaction: 0, member_id: 1)
+	Category.find_or_create_by(description: "Salário", kind_transaction: 1, member_id: 1)
+	Category.find_or_create_by(description: "Freelancer", kind_transaction: 1, member_id: 1)
 puts "Categorias geradas"
 
 puts "Gerando Transações"

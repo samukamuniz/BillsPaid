@@ -45,11 +45,14 @@ ActiveRecord::Schema.define(version: 20170514155626) do
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
   create_table "categories", force: :cascade do |t|
-    t.string   "description"
     t.integer  "kind_transaction"
+    t.integer  "member_id"
+    t.string   "description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  add_index "categories", ["member_id"], name: "index_categories_on_member_id"
 
   create_table "kind_transactions", force: :cascade do |t|
     t.string   "description"

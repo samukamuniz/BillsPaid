@@ -57,21 +57,39 @@
               <i class="fa fa-dashboard fa-fw"></i> Contas</a>
             <% end %>
           </li>
+          
           <li>
-            <%= link_to site_categories_path do %>
-              <i class="fa fa-dashboard fa-fw"></i> Categorias</a>
-            <% end %>
+            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Despesas<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-dashboard fa-fw"></i> Minhas Despesas</a>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to site_expense_types_path do %>
+                  <i class="fa fa-dashboard fa-fw"></i> Tipos Despesas</a>
+                <% end %>
+              </li>
+            </ul>
           </li>
+
           <li>
-            <%= link_to site_kind_bills_path do %>
-              <i class="fa fa-dashboard fa-fw"></i> Categorias Despesas</a>
-            <% end %>
-          </li>          
-          <li>
-            <%= link_to site_transactions_path do %>
-              <i class="fa fa-dashboard fa-fw"></i> Transações</a>
-            <% end %>
-          </li>        
+            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Receitas<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-dashboard fa-fw"></i> Minhas Receitas</a>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-dashboard fa-fw"></i> Tipos Receitas</a>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+
         </ul>
       </div>
       <!-- /.sidebar-collapse -->
