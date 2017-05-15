@@ -14,6 +14,7 @@
           <tr>
             <th>Conta</th>
             <th>Valor</th>
+            <th>Membro</th>
             <th></th>
           </tr>
         </thead>
@@ -22,6 +23,7 @@
           <tr>
             <td><%= account.description %></td>
             <td><%= account.amount %></td>
+            <td><%= account.member.email %></td>
             <td>
               <%= link_to edit_site_account_path(account), class: "btn btn-primary btn-circle" do %>
                 <i class="fa fa-edit"></i>
