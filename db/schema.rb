@@ -46,12 +46,10 @@ ActiveRecord::Schema.define(version: 20170514155626) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "description"
-    t.integer  "kind_transaction_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "kind_transaction"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
-
-  add_index "categories", ["kind_transaction_id"], name: "index_categories_on_kind_transaction_id"
 
   create_table "kind_transactions", force: :cascade do |t|
     t.string   "description"

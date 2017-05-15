@@ -25,18 +25,18 @@ puts "Gerando Contas"
 	Account.create(description: "Bradesco", amount: 1038.69, member_id: 1)
 puts "Contas gerados"
 
-puts "Gerando Tipos de transações"
-	KindTransaction.find_or_create_by(description: "Despesas")
-	KindTransaction.find_or_create_by(description: "Receitas")
-puts "Tipos de transações gerados"
+#puts "Gerando Tipos de transações"
+#	KindTransaction.find_or_create_by(description: "Despesas")
+#	KindTransaction.find_or_create_by(description: "Receitas")
+#puts "Tipos de transações gerados"
 
 puts "Gerando Categorias"
-	Category.find_or_create_by(description: "Alimentação", kind_transaction_id: 1)
-	Category.find_or_create_by(description: "Educação", kind_transaction_id: 1)
-	Category.find_or_create_by(description: "Saúde", kind_transaction_id: 1)
-	Category.find_or_create_by(description: "Diversão", kind_transaction_id: 1)
-	Category.find_or_create_by(description: "Salário", kind_transaction_id: 2)
-	Category.find_or_create_by(description: "Freelancer", kind_transaction_id: 2)
+	Category.find_or_create_by(description: "Alimentação", kind_transaction: 0)
+	Category.find_or_create_by(description: "Educação", kind_transaction: 0)
+	Category.find_or_create_by(description: "Saúde", kind_transaction: 0)
+	Category.find_or_create_by(description: "Diversão", kind_transaction: 0)
+	Category.find_or_create_by(description: "Salário", kind_transaction: 1)
+	Category.find_or_create_by(description: "Freelancer", kind_transaction: 1)
 puts "Categorias geradas"
 
 puts "Gerando Transações"
