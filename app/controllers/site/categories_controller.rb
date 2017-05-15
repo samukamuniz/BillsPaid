@@ -1,32 +1,24 @@
 class Site::CategoriesController < SiteController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-  # GET /categories
-  # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.where(member: current_member)
   end
 
-  # GET /categories/1
-  # GET /categories/1.json
   def show
   end
 
-  # GET /categories/new
   def new
     @category = Category.new
-    options_for_select
   end
 
-  # GET /categories/1/edit
   def edit
-    options_for_select
   end
 
-  # POST /categories
-  # POST /categories.json
   def create
     @category = Category.new(category_params)
+    @category.member = current_member
+    @category.kind_transaction = 2
 
     respond_to do |format|
       if @category.save
@@ -39,8 +31,6 @@ class Site::CategoriesController < SiteController
     end
   end
 
-  # PATCH/PUT /categories/1
-  # PATCH/PUT /categories/1.json
   def update
     respond_to do |format|
       if @category.update(category_params)
@@ -53,8 +43,6 @@ class Site::CategoriesController < SiteController
     end
   end
 
-  # DELETE /categories/1
-  # DELETE /categories/1.json
   def destroy
     categoria = @category.description
     @category.destroy
@@ -65,11 +53,6 @@ class Site::CategoriesController < SiteController
   end
 
   private
-
-    def options_for_select
-      @kind_options_for_select = KindTransaction.all
-    end
-    
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])

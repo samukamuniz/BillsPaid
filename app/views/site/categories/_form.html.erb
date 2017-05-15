@@ -21,10 +21,6 @@
           <%= f.text_field :description, class: "form-control", placeholder: "Ex: Carteira" %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :kind_transaction_id %><br>
-          <%= collection_select(:category, :kind_transaction_id, @kind_options_for_select, :id, :description, class:"form-control") %>
-        </div>
         <button type="submit" class="btn btn-default">Salvar</button>
       <% end %><!-- Fim-Formulario -->
     </div>
