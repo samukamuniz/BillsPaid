@@ -1,2 +1,0 @@
-module Site::IncomeTypeHelper
-end
