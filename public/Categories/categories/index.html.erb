@@ -2,7 +2,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     Listando as categorias
-    <%= link_to new_site_expense_type_path, class: "btn btn-success pull-right", style: "margin-top: -6px" do %>
+    <%= link_to new_site_category_path, class: "btn btn-success pull-right", style: "margin-top: -6px" do %>
       <i class="fa fa-plus"></i>
     <% end %>
   </div>
@@ -19,17 +19,17 @@
           </tr>
         </thead>
         <tbody>
-          <% @expense_types.each do |expense_type| %>
+          <% @categories.each do |category| %>
           <tr>
-            <td><%= expense_type.kind_transaction_br %></td>
-            <td><%= expense_type.description %></td>
-            <td><%= expense_type.member.email %></td>
+            <td><%= category.kind_transaction_br %></td>
+            <td><%= category.description %></td>
+            <td><%= category.member.email %></td>
             <td>
-              <%= link_to edit_site_expense_type_path(expense_type), class: "btn btn-primary btn-circle" do %>
+              <%= link_to edit_site_category_path(category), class: "btn btn-primary btn-circle" do %>
                 <i class="fa fa-edit"></i>
               <% end %>
-              <%= link_to site_expense_type_path(expense_type.id), method: :delete, class: "btn btn-danger btn-circle", 
-                data: {confirm: "Você deseja realmente excluir (#{expense_type.description})?"} do %>
+              <%= link_to site_category_path(category.id), method: :delete, class: "btn btn-danger btn-circle", 
+                data: {confirm: "Você deseja realmente excluir (#{category.description})?"} do %>
                 <i class="fa fa-minus"></i>
               <% end %>
             </td>
