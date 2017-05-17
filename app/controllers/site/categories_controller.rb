@@ -18,7 +18,7 @@ class Site::CategoriesController < SiteController
   def create
     @category = Category.new(category_params)
     @category.member = current_member
-    @category.kind_transaction = 2
+    @category.kind_transaction = 1
 
     respond_to do |format|
       if @category.save

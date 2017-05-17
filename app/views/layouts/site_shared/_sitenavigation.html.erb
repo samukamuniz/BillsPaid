@@ -18,14 +18,16 @@
             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
-          <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-          </li>
+          <li>
+          <%= link_to edit_site_member_path(current_member) do %>
+            <i class="fa fa-user fa-fw"></i> User Profile
+          <% end %>
+        </li>
           <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
           </li>
           <li class="divider"></li>
           <%= link_to destroy_member_session_path, method: :delete do %>
-            <i class="fa fa-sign-out fa-fw"></i>
-            Logout
+            <i class="fa fa-sign-out fa-fw"></i>Logout
           <% end %>
         </ul>
         <!-- /.dropdown-user -->
@@ -59,7 +61,7 @@
           </li>
 
           <li>
-            <%= link_to site_categories_path do %>
+            <%= link_to '#' do %>
               <i class="fa fa-dashboard fa-fw"></i> Teste Categorias</a>
             <% end %>
           </li>
@@ -73,7 +75,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to site_expense_categories_path do %>
+                <%= link_to "#" do %>
                   <i class="fa fa-dashboard fa-fw"></i> Tipos Despesas</a>
                 <% end %>
               </li>
