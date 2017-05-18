@@ -177,11 +177,7 @@ class Site::TransactionsController < SiteController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:kind_transaction_id, :description, :amount, :date, :category_id, :account_id, :paid)
-    end
-
-    def teste
-
+      params.require(:transaction).permit(:member_id, :kind_transaction, :description, :amount, :date, :category_id, :account_id, :paid)
     end
 end
 
