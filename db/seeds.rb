@@ -30,14 +30,14 @@ puts "Contas gerados"
 #	KindTransaction.find_or_create_by(description: "Receitas")
 #puts "Tipos de transações gerados"
 
-puts "Gerando Categorias"
-	Category.find_or_create_by(description: "Alimentação", kind_transaction: 1, member_id: 1)
-	Category.find_or_create_by(description: "Educação", kind_transaction: 1, member_id: 1)
-	Category.find_or_create_by(description: "Saúde", kind_transaction: 1, member_id: 1)
-	Category.find_or_create_by(description: "Diversão", kind_transaction: 1, member_id: 1)
-	Category.find_or_create_by(description: "Salário", kind_transaction: 2, member_id: 1)
-	Category.find_or_create_by(description: "Freelancer", kind_transaction: 2, member_id: 1)
-puts "Categorias geradas"
+puts "Gerando Teste"
+	Teste.find_or_create_by(description: "Alimentação", kind_transaction: 1, member_id: 1)
+	Teste.find_or_create_by(description: "Educação", kind_transaction: 1, member_id: 1)
+	Teste.find_or_create_by(description: "Saúde", kind_transaction: 1, member_id: 1)
+	Teste.find_or_create_by(description: "Diversão", kind_transaction: 1, member_id: 1)
+	Teste.find_or_create_by(description: "Salário", kind_transaction: 2, member_id: 1)
+	Teste.find_or_create_by(description: "Freelancer", kind_transaction: 2, member_id: 1)
+puts "Testes geradas"
 
 puts "Gerando Transações"
 	Transaction.create(kind_transaction_id: 1,description: "Merenda",amount: 5.49,
