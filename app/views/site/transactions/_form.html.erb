@@ -18,13 +18,8 @@
       <%= form_for([:site, @transaction]) do |f| %><!-- Formulario -->
         
         <div class="form-group">
-          <%= f.label :kind_transaction_id %><br>
-          <%= collection_select(:transaction, :kind_transaction_id, @kind_options_for_select, :id, :description, class:"form-control") %>
-        </div>
-
-        <div class="form-group">
           <%= f.label :date %><br>
-          <%= f.date_select :date %>
+          <%= f.date_field :date %>
         </div>
 
         <div class="form-group">

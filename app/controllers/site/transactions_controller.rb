@@ -15,14 +15,13 @@ class Site::TransactionsController < SiteController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-    kind_opcoes_select
+    @transaction.kind_transaction = 1
     category_opcoes_select
     account_opcoes_select
   end
 
   # GET /transactions/1/edit
   def edit
-    kind_opcoes_select
     category_opcoes_select
     account_opcoes_select
   end
@@ -32,7 +31,7 @@ class Site::TransactionsController < SiteController
   def create
     @transaction = Transaction.new(transaction_params)
     
-    if @transaction.kind_transaction_id == 1
+    if @transaction.kind_transaction == 1
       if @transaction.paid == true
         expense
       end

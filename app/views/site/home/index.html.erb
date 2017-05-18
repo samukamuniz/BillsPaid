@@ -2,18 +2,18 @@
 
 <div class="row">
   <div class="col-lg-4 col-md-3">
-      <div class="panel panel-primary">
-          <div class="panel-heading">
-              <div class="row">
-                  <div>Saldo Acumulado</div>
-                  <div class="col-xs-9 text-center">
-                      <div class="huge center">
-                        R$<%= @receitas %>
-                      </div>
-                  </div>
-              </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="row">
+          <h4 align="center">Saldo Acumulado</h4>
+          <div class="col-xs-9 text-center">
+            <div class="huge center" align="centerLayou">
+              <%= humanized_money_with_symbol(@receitas) %>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
   <div class="col-lg-5 col-md-6">
       <div class="panel panel-green">
