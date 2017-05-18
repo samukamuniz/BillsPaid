@@ -1,9 +1,10 @@
 class CreateTransactions < ActiveRecord::Migration
   def change
     create_table :transactions do |t|
-      t.references :kind_transaction, index: true, foreign_key: true
+      t.references :member, index: true, foreign_key: true
+      t.integer :kind_transaction
       t.string :description
-      t.decimal :amount, :decimal, precision: 5, scale: 2
+      t.integer :amount_cents, default: 0
       t.date :date
       t.references :category, index: true, foreign_key: true
       t.references :account, index: true, foreign_key: true

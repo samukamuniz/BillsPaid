@@ -116,16 +116,12 @@ class Site::TransactionsController < SiteController
 
   private
 
-    def kind_opcoes_select
-      @kind_options_for_select = KindTransaction.all
-    end
-
     def category_opcoes_select
       @category_options_for_select = Category.all
     end
 
     def account_opcoes_select
-      @account_options_for_select = Account.all
+      @account_options_for_select = Account.where(member_id: current_member)
     end
 
     def returnsMoneyToInitialAccount
