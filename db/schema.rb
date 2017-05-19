@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170514155626) do
   add_index "categories", ["member_id"], name: "index_categories_on_member_id"
 
   create_table "members", force: :cascade do |t|
+    t.string   "name",                   default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

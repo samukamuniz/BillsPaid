@@ -34,14 +34,13 @@
             <div style="margin-top:10px" class="form-group">
                 <!-- Button -->
               <div class="col-sm-12 controls">
-                <%= f.submit "Entrar", class: "btn btn-success" %>             
-                <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+                <%= f.submit "Entrar", class: "btn btn-primary" %>
               </div>
             </div>
             <div class="form-group">
               <div class="col-md-12 control">
                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                  Don't have an account! 
+                  Ainda não tem conta? <b>Crie uma!</b> <%= link_to "Cadastre-se", new_site_member_path %>
                 <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
                   Sign Up Here
                 </a>
