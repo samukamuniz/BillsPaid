@@ -15,7 +15,6 @@ class Site::TransactionsController < SiteController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-    @transaction.kind_transaction = 1
     category_opcoes_select
     account_opcoes_select
   end
@@ -30,6 +29,8 @@ class Site::TransactionsController < SiteController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
+    @transaction.kind_transaction = 1
+    @transaction.member_id = current_member
     
     if @transaction.kind_transaction == 1
       if @transaction.paid == true
@@ -71,7 +72,7 @@ class Site::TransactionsController < SiteController
     if (@check.account_id) == (@transaction.account_id)
       #Atualiza o valor da conta que estava pendente 
       if (@check.paid == false) && (@transaction.paid == true)
-        if @transaction.kind_transaction_id == 1
+        if @transaction.kind_transaction == 1
             expense
         else
             income
@@ -106,7 +107,7 @@ class Site::TransactionsController < SiteController
       format.json { head :no_content }
     end
 
-    if @transaction.kind_transaction_id == 1
+    if @transaction.kind_transaction == 1
       returnsMoneyToInitialAccount
     else
       migrateAmountToAccount
@@ -114,9 +115,8 @@ class Site::TransactionsController < SiteController
   end
 
   private
-
     def category_opcoes_select
-      @category_options_for_select = Category.all
+      @category_options_for_select = Category.where(kind_transaction: 1, member_id: current_member)
     end
 
     def account_opcoes_select

@@ -19,7 +19,7 @@ class Site::ExpenseTypesController < SiteController
 
     respond_to do |format|
       if @expense_type.save
-        format.html { redirect_to :site_expense_types_path, notice: "A Categoria (#{@expense_type.description}) foi salva com sucesso!" }
+        format.html { redirect_to site_expense_types_path, notice: "A Categoria (#{@expense_type.description}) foi salva com sucesso!" }
         format.json { render :show, status: :created, location: @expense_type }
       else
         format.html { render :new }
