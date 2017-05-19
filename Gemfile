@@ -15,9 +15,8 @@ gem 'devise-i18n'
 # Bundler-like DSL + rake tasks for Bower on Rails
 gem "bower-rails", "~> 0.11.0"
 # Integration of RubyMoney - Money with Rails
- gem 'money-rails'
-
-# Use sqlite3 as the database for Active Record
+gem 'money-rails'
+# Materialize sass ruby gem
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
