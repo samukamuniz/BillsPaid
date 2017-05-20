@@ -1,11 +1,8 @@
 class Site::CategoriesController < SiteController
-	before_action :set_category, only: [:show, :edit, :update, :destroy]
+	before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.where(member: current_member)
-  end
-
-  def show
   end
 
   def new
@@ -18,11 +15,10 @@ class Site::CategoriesController < SiteController
   def create
     @category = Category.new(category_params)
     @category.member = current_member
-    @category.kind_transaction = 1
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to site_categories_path, notice: "A Categoria (#{@category.description}) foi salva com sucesso!" }
+        format.html { redirect_to redirect_route, notice: "A Categoria (#{@category.description}) foi salva com sucesso!" }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -32,9 +28,11 @@ class Site::CategoriesController < SiteController
   end
 
   def update
+    #redirect_route = @category.kind_transaction == 1 ? site_expense_types_path : site_income_types_path
+    
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to site_categories_path, notice: "A Categoria (#{@category.description}) foi atualizada com sucesso!" }
+        format.html { redirect_to redirect_route, notice: "A Categoria (#{@category.description}) foi atualizada com sucesso!" }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
