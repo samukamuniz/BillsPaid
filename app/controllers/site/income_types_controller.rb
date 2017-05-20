@@ -16,17 +16,26 @@ class Site::IncomeTypesController < Site::CategoriesController
     @category = Category.new(category_params)
     @category.member = current_member
     @category.kind_transaction = 2
-    puts "****************************************************************************************************"
-    puts "****************************************************************************************************"
-    puts "Estou passando por aqui income_types_create"
-    puts "****************************************************************************************************"
-    puts "****************************************************************************************************"
+
     respond_to do |format|
       if @category.save
         format.html { redirect_to site_income_types_path, notice: "A Categoria (#{@category.description}) foi salva com sucesso!" }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
+        format.json { render json: @category.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    
+    respond_to do |format|
+      if @category.update(category_params)
+        format.html { redirect_to site_income_types_path, notice: "A Categoria (#{@category.description}) foi atualizada com sucesso!" }
+        format.json { render :show, status: :ok, location: @category }
+      else
+        format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
