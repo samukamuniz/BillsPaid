@@ -2,16 +2,14 @@ Rails.application.routes.draw do
 
   root 'site/home#index'
 
-  get '/site/expense_types', to: 'site/expense_types#index', as: 'TiposDespesa'
-
-
+  #et '/site/expense_types', to: 'site/expense_types#index', as: 'TiposDespesa'
 
   namespace :site do
     get 'home', to: 'home#index'
     resources :accounts, except: [:show]
     resources :categories, except: [:show]
-    resources :income_types, except: [:show]
     resources :expense_types, except: [:show]
+    resources :income_types, except: [:show]
     resources :transactions, except: [:show]
     resources :members,  except: [:show, :destroy]
   end

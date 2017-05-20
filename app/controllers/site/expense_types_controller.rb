@@ -1,5 +1,5 @@
-class Site::ExpenseTypesController < Site::CategoriesController
-  before_action :set_category, only: [ :update, :destroy]
+class Site::ExpenseTypesController < Site::CategoriesController 
+  before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.where(kind_transaction: 1, member: current_member)
@@ -16,11 +16,7 @@ class Site::ExpenseTypesController < Site::CategoriesController
     @category = Category.new(category_params)
     @category.member = current_member
     @category.kind_transaction = 1
-    puts "****************************************************************************************************"
-    puts "****************************************************************************************************"
-    puts "Estou passando por aqui expense_types_create"
-    puts "****************************************************************************************************"
-    puts "****************************************************************************************************"
+
     respond_to do |format|
       if @category.save
         format.html { redirect_to site_expense_types_path, notice: "A Categoria (#{@category.description}) foi salva com sucesso!" }
@@ -33,11 +29,6 @@ class Site::ExpenseTypesController < Site::CategoriesController
   end
 
   def update
-    puts "****************************************************************************************************"
-    puts "****************************************************************************************************"
-    puts "Estou passando por aqui categories_update"
-    puts "****************************************************************************************************"
-    puts "****************************************************************************************************"
     
     respond_to do |format|
       if @category.update(category_params)
@@ -49,7 +40,6 @@ class Site::ExpenseTypesController < Site::CategoriesController
       end
     end
   end
-
 
   def destroy
     tipoDespesa = @category.description
@@ -70,5 +60,5 @@ class Site::ExpenseTypesController < Site::CategoriesController
   def category_params
     params.require(:category).permit(:kind_transaction, :member_id, :description)
   end
-
+  
 end
