@@ -6,8 +6,10 @@ class Category < ActiveRecord::Base
   def kind_transaction_br
   	if self.kind_transaction == 'expenses'
   		'Despesas'
-  	else
+  	elsif self.kind_transaction == 'incomes'
   		'Receitas'
+    else
+      'Sou nulo'
   	end  	
   end
 end

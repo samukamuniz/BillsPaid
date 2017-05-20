@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
+  root 'site/home#index'
+
+  get '/site/expense_types', to: 'site/expense_types#index', as: 'TiposDespesa'
+
+
+
   namespace :site do
     get 'home', to: 'home#index'
     resources :accounts, except: [:show]
     resources :categories, except: [:show]
+    resources :income_types, except: [:show]
     resources :expense_types, except: [:show]
     resources :transactions, except: [:show]
     resources :members,  except: [:show, :destroy]
@@ -19,7 +26,6 @@ Rails.application.routes.draw do
   devise_for :admins, :skip => [:registrations]
   devise_for :members
 
-  root 'site/home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
