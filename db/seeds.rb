@@ -36,15 +36,15 @@ puts "Categorias geradas"
 
 
 puts "Gerando Transações"
-	Transaction.create(kind_transaction: 1,description: "Merenda",amount: "5,49",
+	Transaction.create(member_id: 1, kind_transaction: 1,description: "Merenda",amount: "5,49",
 		date: "2017.04.20",category_id: 1,account_id: 1,paid: true)
 	
-	Transaction.create(kind_transaction: 1,description: "Remedio",amount: "25,37",
+	Transaction.create(member_id: 1, kind_transaction: 1,description: "Remedio",amount: "25,37",
 		date: "2017.04.23",category_id: 3,account_id: 2,paid: true)
 	
-	Transaction.create(kind_transaction: 2,description: "Salario",amount: "309,45",
+	Transaction.create(member_id: 1, kind_transaction: 2,description: "Salario",amount: "309,45",
 		date: "2017.04.30",category_id: 1,account_id: 2,paid: true)
 	
-	Transaction.create(kind_transaction: 2,description: "Freela TI",amount: "70,01",
+	Transaction.create(member_id: 1, kind_transaction: 2,description: "Freela TI",amount: "70,01",
 		date: "2017.05.01",category_id: 6,account_id: 1,paid: true)
 puts "Transações geradas"
