@@ -5,7 +5,7 @@ class Transaction < ActiveRecord::Base
   monetize :amount_cents
   enum kind_transaction: {:expenses => 1, :incomes => 2}
 
-  validates :kind_transaction, :description, :amount, :date, presence: true
+  validates :kind_transaction, :category_id, :account_id, :description, :amount, :date, presence: true
   validates :amount, numericality: {greater_than: 0}
 
   def kind_transaction_br
