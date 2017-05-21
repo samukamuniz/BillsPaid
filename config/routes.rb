@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :categories, except: [:show]
     resources :expenses, except: [:show]
     resources :expense_types, except: [:show]
-
+    resources :incomes, except: [:show]
     resources :income_types, except: [:show]
     resources :transactions, except: [:show]
     resources :members,  except: [:show, :destroy]
