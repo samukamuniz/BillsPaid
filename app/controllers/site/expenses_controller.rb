@@ -3,6 +3,7 @@ class Site::ExpensesController < Site::TransactionsController
 
   def index
     @transactions = Transaction.where(kind_transaction: 1, member_id: current_member).order('date DESC')
+    @transaction_type = 1
   end
 
   def new
