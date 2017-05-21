@@ -9,6 +9,7 @@ class Site::ExpensesController < Site::TransactionsController
   def new
     @transaction = Transaction.new
     @anddress = site_expenses_path
+    @transaction_type = 1
   end
 
   def edit
