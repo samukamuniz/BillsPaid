@@ -18,6 +18,7 @@
 	      <th>Category</th>
 	      <th>Account</th>
 	      <th>Amount</th>
+        <th>Membro</th>
 	      <th>Paid</th>
 	      <th></th>
           </tr>
@@ -31,6 +32,7 @@
 	        <td><%= transaction.category.description %></td>
 	        <td><%= transaction.account.description %></td>
 	        <td><%= humanized_money_with_symbol(transaction.amount) %></td>
+          <td><%= transaction.member.email %></td>
 	        <td><%= transaction.paid %></td>
             <td>
               <%= link_to edit_site_transaction_path(transaction), class: "btn btn-primary btn-circle" do %>
