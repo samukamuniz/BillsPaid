@@ -14,6 +14,7 @@ class Site::ExpensesController < Site::TransactionsController
 
   def edit
     @anddress = site_expense_path
+    @transaction_type = 1
   end
 
   def create
