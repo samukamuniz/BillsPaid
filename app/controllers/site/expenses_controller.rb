@@ -66,6 +66,22 @@ class Site::ExpensesController < Site::TransactionsController
     end
   end
 
+  def destroy
+    transacao = @transaction.description
+    @transaction_save = Transaction.find(@transaction.id) #Busca no BD a Transação Existente e guarda os valores
+    @account_save = Account.find(@transaction_save.account_id) #Busca a conta inicial da transação existente
+    
+    @transaction.destroy
+    respond_to do |format|
+      format.html { redirect_to site_expenses_path, notice: "A Transação (#{transacao}) foi deletada com sucesso!" }
+      format.json { head :no_content }
+    end
+
+    if @transaction.paid == true
+      credit
+    end
+  end
+
   private
 
     def debit #Debita valor de uma nova transação paid=true ou debita de uma conta que se iniciou com paid=false  
@@ -89,7 +105,7 @@ class Site::ExpensesController < Site::TransactionsController
         @account_save.update(amount: @account_save.amount - (@transaction.amount - @transaction_save.amount))
       end
     end
-    
+
     def set_transaction
       @transaction = Transaction.find(params[:id])
     end
