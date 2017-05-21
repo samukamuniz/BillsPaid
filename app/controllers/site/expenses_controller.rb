@@ -30,23 +30,70 @@ class Site::ExpensesController < Site::TransactionsController
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
-    
+  end
 
+  def update
+    @transaction_save = Transaction.find(@transaction.id) #Busca no BD a Transação Existente e guarda os valores
+    @account_save = Account.find(@transaction_save.account_id) #Busca a conta inicial da transação existente
+
+    respond_to do |format|
+      if @transaction.update(transaction_params)
+        format.html { redirect_to site_expenses_path, notice: "A Transação (#{@transaction.description}) foi atualizada com sucesso!" }
+        format.json { render :show, status: :ok, location: @transaction }
+      else
+        format.html { render :edit }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+      end
+    end
+    
+    if (@transaction_save.account_id) == (@transaction.account_id) #Verifica se atualização ocorre na mesma conta cadastrada
+      if (@transaction_save.paid == false) && (@transaction.paid == true)
+        debit
+      elsif (@transaction_save.paid == true) && (@transaction.paid == false)
+        credit
+        elsif (@transaction_save.paid == true) && (@transaction.paid == true)
+        update_debit 
+      end
+    else #Aqui as contas são diferentes
+      if (@transaction_save.paid == false) && (@transaction.paid == true)
+        change_account
+      elsif (@transaction_save.paid == true) && (@transaction.paid == false)
+        credit
+      elsif (@transaction_save.paid == true) && (@transaction.paid == true)
+        debit
+        credit
+      end
+    end
   end
 
   private
 
-    def debit
-      aux = Account.find(@transaction.account_id)
-      aux.amount += - @transaction.amount
-      aux.save
+    def debit #Debita valor de uma nova transação paid=true ou debita de uma conta que se iniciou com paid=false  
+      @account_actual = Account.find(@transaction.account_id) 
+      @account_actual.update(amount: @account_actual.amount - @transaction.amount)
     end
-    # Use callbacks to share common setup or constraints between actions.
+
+    def credit #Devolve valor pago para a conta debitada
+      @account_save.update(amount: @account_save.amount + @transaction.amount)
+    end
+
+    def change_account #Transação não paga em uma conta que se torna paga em outra
+      @new_account = Account.find(@transaction.account_id)
+      @new_account.update(amount: @new_account.amount - @transaction.amount)
+    end
+
+    def update_debit
+      if @transaction_save.amount > @transaction.amount
+        @account_save.update(amount: @account_save.amount + (@transaction_save.amount - @transaction.amount))
+      else
+        @account_save.update(amount: @account_save.amount - (@transaction.amount - @transaction_save.amount))
+      end
+    end
+    
     def set_transaction
       @transaction = Transaction.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
       params.require(:transaction).permit(:member_id, :kind_transaction, :description, :amount, :date, :category_id, :account_id, :paid)
     end
