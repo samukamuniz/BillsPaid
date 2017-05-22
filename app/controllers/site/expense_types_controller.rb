@@ -1,4 +1,4 @@
-class Site::ExpenseTypesController < Site::CategoriesController 
+class Site::ExpenseTypesController < SiteController #Site::CategoriesController 
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
@@ -8,9 +8,11 @@ class Site::ExpenseTypesController < Site::CategoriesController
 
   def new
     @category = Category.new
+    @anddress = site_expense_types_path
   end
 
   def edit
+    @anddress = site_expense_type_path
   end
 
   def create
