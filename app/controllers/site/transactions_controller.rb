@@ -2,7 +2,8 @@ class Site::TransactionsController < SiteController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
   def index
-    @transactions = Transaction.where(member_id: current_member, paid: true).order('date DESC')
+    @transactions = Transaction.where(member_id: current_member).order('date DESC')
+    @transaction_type = 0
   end
 
   def new

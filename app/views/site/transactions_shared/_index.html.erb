@@ -8,7 +8,7 @@
         <%= link_to new_site_expense_path, class: "btn btn-success pull-right", style: "margin-top: -30px" do %>
           <i class="fa fa-plus"></i>
         <% end %>
-      <% else %>
+      <% elsif @transaction_type == 2%>
         <%= link_to new_site_income_path, class: "btn btn-success pull-right", style: "margin-top: -30px" do %>
           <i class="fa fa-plus"></i>
         <% end %>
@@ -23,6 +23,9 @@
               <th>Status</th>
               <th>Data</th>
               <th>Descrição</th>
+              <% if  @transaction_type == 0 %>
+                <td><b>Transação</b></td>
+              <% end %>
               <th>Categoria</th>
               <th>Conta</th>
               <th>Valor</th>
@@ -45,6 +48,9 @@
               </td>
                 <td><%= transaction.date %></td>
                 <td><%= transaction.description %></td>
+                <% if  @transaction_type == 0 %>
+                  <td><%= transaction.kind_transaction_br %></td>
+                <% end %>
                 <td><%= transaction.category.description %></td>
                 <td><%= transaction.account.description %></td>
                 <td><%= humanized_money_with_symbol(transaction.amount) %></td>
@@ -58,7 +64,7 @@
                     data: {confirm: "Você deseja realmente excluir (#{transaction.description})?"} do %>
                     <i class="fa fa-minus"></i>
                   <% end %>
-                <% else %>
+                <% elsif @transaction_type == 2 %>
                   <%= link_to edit_site_income_path(transaction), class: "btn btn-primary btn-circle" do %>
                     <i class="fa fa-edit"></i>
                   <% end %>
