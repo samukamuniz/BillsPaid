@@ -2,14 +2,14 @@
 <div class="col-lg-12">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <%= action %><!-- Recebe o nome da página -->
+      <h5><b><%= action %></b></h5><!-- Recebe o nome da página -->
       <%# Verifica qual o botão "new" será liberado a partir do tipo de transação %>
       <% if @categories_type == 1 %>
-        <%= link_to new_site_expense_type_path, class: "btn btn-success pull-right", style: "margin-top: -6px" do %>
+        <%= link_to new_site_expense_type_path, class: "btn btn-success pull-right", style: "margin-top: -34px" do %>
           <i class="fa fa-plus"></i>
         <% end %>
       <% else %>
-        <%= link_to new_site_income_type_path, class: "btn btn-success pull-right", style: "margin-top: -6px" do %>
+        <%= link_to new_site_income_type_path, class: "btn btn-success pull-right", style: "margin-top: -34px" do %>
           <i class="fa fa-plus"></i>
         <% end %>
       <% end %>
