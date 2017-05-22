@@ -1,3 +1,4 @@
+<h1 class="page-header"></h1>
   <% if @member.errors.any? %><!-- Verifica se há erros e joga o erro na tela - SM -->
     <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -11,7 +12,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <%= action %><!-- Recebe o nome da página -->
+    <h5><b><%= action %></b></h5><!-- Recebe o nome da página -->
   </div>
   <div class="panel-body">
     <div class="col-lg-6">
