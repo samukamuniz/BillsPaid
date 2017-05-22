@@ -4,10 +4,10 @@
     <div class="panel panel-primary">
       <div class="panel-heading">
         <div class="row">
-          <h4 align="center">Saldo em contas</h4>
+          <h4 align="center">Saldo total</h4>
           <div class="col-xs-9 text-center">
             <div class="huge center" align="centerLayou">
-              <%= number_to_currency(sald_to_account, unit:"R$", separator: ",", delimiter: "") %>
+              <%= humanized_money_with_symbol(sald_to_account) %>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@
           <h4 align="center">Total Receitas</h4>
           <div class="col-xs-6 text-center">
             <div align="center" class="huge center" align="centerLayou">
-              <%= humanized_money (total_incomes) %>
+              <%= humanized_money_with_symbol(total_incomes) %>
             </div>
           </div>
         </div>
