@@ -1,6 +1,5 @@
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    
   <div class="navbar-header">
     <%= link_to site_home_path do %>
       <%= image_tag "BillsPaid_15.png", class:"navbar" %>
@@ -8,7 +7,7 @@
   </div>
   <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
-    <li>Welcome <b><%= current_member.email %></b></li>
+    <li>Welcome <b><%= current_member.name %></b></li>
       <!-- /.dropdown -->
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -20,8 +19,6 @@
             <i class="fa fa-user fa-fw"></i> User Profile
           <% end %>
         </li>
-          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-          </li>
           <li class="divider"></li>
           <%= link_to destroy_member_session_path, method: :delete do %>
             <i class="fa fa-sign-out fa-fw"></i>Logout
