@@ -1,4 +1,4 @@
-class Site::IncomesController < Site::TransactionsController
+class Site::IncomesController < SiteController#Site::TransactionsController
   before_action :set_transaction, only: [:edit, :update, :destroy]
   
   def index
