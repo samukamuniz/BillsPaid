@@ -5,9 +5,6 @@ class Site::TransactionsController < SiteController
     @transactions = Transaction.where(member_id: current_member, paid: true).order('date DESC')
   end
 
-  def show
-  end
-
   def new
     @transaction = Transaction.new
   end

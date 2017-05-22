@@ -1,4 +1,4 @@
-class Site::CategoriesController < SiteController
+/class Site::CategoriesController < SiteController
 	before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
@@ -61,3 +61,4 @@ class Site::CategoriesController < SiteController
       params.require(:category).permit(:kind_transaction, :member_id, :description)
     end
 end
+/
