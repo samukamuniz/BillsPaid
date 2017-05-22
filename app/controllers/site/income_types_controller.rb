@@ -1,4 +1,4 @@
-class Site::IncomeTypesController < Site::CategoriesController 
+class Site::IncomeTypesController < SiteController#Site::CategoriesController 
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
@@ -8,9 +8,11 @@ class Site::IncomeTypesController < Site::CategoriesController
 
   def new
     @category = Category.new
+    @anddress = site_income_types_path
   end
 
   def edit
+    @anddress = site_income_type_path
   end
 
   def create
