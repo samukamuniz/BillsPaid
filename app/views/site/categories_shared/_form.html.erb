@@ -1,4 +1,4 @@
-<h1 class="page-header">Categorias</h1>
+<h1 class="page-header"></h1>
   <% if @category.errors.any? %><!-- Verifica se há erros e joga o erro na tela - SM -->
   <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -15,7 +15,7 @@
   </div>
   <div class="panel-body">
     <div class="col-lg-6">
-      <%= form_for [:site, @category], url: site_expense_type_path  do |f| %><!-- Formulario -->
+      <%= form_for [:site, @category], url: @anddress  do |f| %><!-- Formulario -->
         <div class="form-group">
           <%= f.label :description %><br>
           <%= f.text_field :description, class: "form-control", placeholder: "Ex: Ali" %>
