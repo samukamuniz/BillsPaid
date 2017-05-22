@@ -3,6 +3,7 @@ class Site::ExpenseTypesController < Site::CategoriesController
 
   def index
     @categories = Category.where(kind_transaction: 1, member: current_member)
+    @categories_type = 1
   end
 
   def new
