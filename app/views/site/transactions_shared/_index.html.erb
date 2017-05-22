@@ -19,13 +19,12 @@
       <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
-            <th>Kind transaction</th>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Account</th>
-            <th>Amount</th>
-            <th>Membro</th>
+            <th>Status</th>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Conta</th>
+            <th>Valor</th>
             <th>Paid</th>
             <th></th>
           </tr>
@@ -33,13 +32,12 @@
         <tbody>
           <% @transactions.each do |transaction| %>
           <tr>
-            <td><%= transaction.kind_transaction_br %></td>
+            <td></td>
             <td><%= transaction.date %></td>
             <td><%= transaction.description %></td>
             <td><%= transaction.category.description %></td>
             <td><%= transaction.account.description %></td>
             <td><%= humanized_money_with_symbol(transaction.amount) %></td>
-            <td><%= transaction.member.email %></td>
             <td><%= transaction.paid %></td>
             <td>
             <%# Verifica qual os botões "edit/destroy" serão liberados a partir do tipo de transação %>
